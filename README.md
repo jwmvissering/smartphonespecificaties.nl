@@ -1,0 +1,1 @@
+"# smartphonespecificaties.nl" 
