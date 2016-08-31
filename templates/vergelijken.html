@@ -1,0 +1,228 @@
+<div ng-controller="vergelijkenController">
+	<div class="container" ng-init="init()">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group" id="selectboxesvergelijken">
+					<h1 id="headingselectboxes">Selecteer een smartphone</h1>
+					<select class="form-control" ng-options="merk.id as merk.naam for merk in merken" ng-model="selectedMerk" ng-change="changeMerk()">
+						<option value="" disabled selected>Selecteer een merk</option>
+					</select><br>
+					<select class="form-control" ng-options="smartphone.id as smartphone.model for smartphone in smartphones" ng-model="selectedSmartphone" ng-change="changeSmartphone()">
+						<option value="" disabled selected>Selecteer een model</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group" id="selectboxesvergelijken">
+					<h1 id="headingselectboxes">Selecteer een smartphone</h1>
+					<select class="form-control" ng-options="merk.id as merk.naam for merk in merken2" ng-model="selectedMerk2" ng-change="changeMerk2()">
+						<option value="" disabled selected>Selecteer een merk</option>
+					</select><br>
+					<select class="form-control" ng-options="smartphone.id as smartphone.model for smartphone in smartphones2" ng-model="selectedSmartphone2" ng-change="changeSmartphone2()">
+						<option value="" disabled selected>Selecteer een model</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-6 phonesection vergelijkenlinks" ng-show="showSpecs" ng-repeat="specs in specificaties">
+				<div class="col-md-12 specsleft">
+					<div id="phoneimagecenter"><img class="center" ng-src="img/{{specs.afbeelding}}"></div>
+						<div class="clear"></div>
+						<p>
+						<div class="reviewbuttonvergelijken"><button type="button" class="btn btn-primary">Reviews bekijken</button></div>
+						<div class="clear"></div>
+					  </p>
+				</div>
+				<div class="col-md-12 phonespecs">
+					<table>
+						<tr>
+							<td>Merk:</td>
+							<td>{{selectedMerkNaam}}</td>
+						</tr>
+						<tr>
+							<td>Model:</td>
+							<td>{{specs.model}}</td>
+						</tr>
+						<tr>
+							<td>Introductie:</td>
+							<td>{{specs.introductie | date:'MMMM yyyy'}}</td>
+						</tr>
+						<tr>
+							<td>Grootte:</td>
+							<td>{{specs.afmetingen}}</td>
+						</tr>
+						<tr>
+							<td>Gewicht:</td>
+							<td>{{specs.gewicht}}</td>
+						</tr>
+						<tr>
+							<td>Besturingssysteem:</td>
+							<td>{{specs.besturingssysteem}}</td>
+						</tr>
+						<tr>
+							<td>Processor:</td>
+							<td>{{specs.processor}}</td>
+						</tr>
+						<tr>
+							<td>Interne opslag:</td>
+							<td>{{specs.interneopslag}}</td>
+						</tr>
+						<tr>
+							<td>Uitbreidbaar geheugen:</td>
+							<td ng-if="specs.uitbreidinggeheugen === 'X'"><i class="fa fa-times" aria-hidden="true"></i></td>
+							<td ng-if="specs.uitbreidinggeheugen === 'Onbekend'">{{specs.uitbreidinggeheugen}}</td>
+							<td ng-if="specs.uitbreidinggeheugen !== 'X' && specs.uitbreidinggeheugen !== 'Onbekend'"><i class="fa fa-check" aria-hidden="true"></i> {{specs.uitbreidinggeheugen}}</td>
+						</tr>
+						<tr>
+							<td>Netwerk:</td>
+							<td>{{specs.netwerk}}</td>
+						</tr>
+						<tr>
+							<td>Bluetooth:</td>
+							<td>{{specs.bluetooth}}</td>
+						</tr>
+						<tr>
+							<td>NFC:</td>
+							<td ng-if="specs.nfc === 'V'"><i class="fa fa-check" aria-hidden="true"></i></td>
+							<td ng-if="specs.nfc !== 'V'"><i class="fa fa-times" aria-hidden="true"></i></td>
+						</tr>
+						<tr>
+							<td>USB:</td>
+							<td>{{specs.usb}}</td>
+						</tr>
+						<tr>
+							<td>Simkaart:</td>
+							<td>{{specs.simkaart}}</td>
+						</tr>
+						<tr>
+							<td>Schermformaat:</td>
+							<td>{{specs.schermformaat}}</td>
+						</tr>
+						<tr>
+							<td>Schermresolutie:</td>
+							<td>{{specs.resolutie}}</td>
+						</tr>
+						<tr>
+							<td>Camera:</td>
+							<td>{{specs.camera}}</td>
+						</tr>
+						<tr>
+							<td>Videoresolutie:</td>
+							<td>{{specs.videoresolutie}}</td>
+						</tr>
+						<tr>
+							<td>Front camera:</td>
+							<td>{{specs.frontcamera}}</td>
+						</tr>
+						<tr>
+							<td>Batterij:</td>
+							<td>{{specs.batterij}}</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+
+			<div class="col-md-6 phonesection vergelijkenrechts" ng-show="showSpecs2" ng-repeat="specs in specificaties2">
+				<div class="col-md-12 specsleft">
+					<div id="phoneimagecenter"><img class="center" ng-src="img/{{specs.afbeelding}}"></div>
+						<div class="clear"></div>
+					<p>
+						<div class="reviewbuttonvergelijken"><button type="button" class="btn btn-primary">Reviews bekijken</button></div>
+						<div class="clear"></div>
+					  </p>
+				</div>
+				<div class="col-md-12 phonespecs">
+					<table>
+						<tr>
+							<td>Merk:</td>
+							<td>{{selectedMerkNaam2}}</td>
+						</tr>
+						<tr>
+							<td>Model:</td>
+							<td>{{specs.model}}</td>
+						</tr>
+						<tr>
+							<td>Introductie:</td>
+							<td>{{specs.introductie | date:'MMMM yyyy'}}</td>
+						</tr>
+						<tr>
+							<td>Grootte:</td>
+							<td>{{specs.afmetingen}}</td>
+						</tr>
+						<tr>
+							<td>Gewicht:</td>
+							<td>{{specs.gewicht}}</td>
+						</tr>
+						<tr>
+							<td>Besturingssysteem:</td>
+							<td>{{specs.besturingssysteem}}</td>
+						</tr>
+						<tr>
+							<td>Processor:</td>
+							<td>{{specs.processor}}</td>
+						</tr>
+						<tr>
+							<td>Interne opslag:</td>
+							<td>{{specs.interneopslag}}</td>
+						</tr>
+						<tr>
+							<td>Uitbreidbaar geheugen:</td>
+							<td ng-if="specs.uitbreidinggeheugen === 'X'"><i class="fa fa-times" aria-hidden="true"></i></td>
+							<td ng-if="specs.uitbreidinggeheugen === 'Onbekend'">{{specs.uitbreidinggeheugen}}</td>
+							<td ng-if="specs.uitbreidinggeheugen !== 'X' && specs.uitbreidinggeheugen !== 'Onbekend'"><i class="fa fa-check" aria-hidden="true"></i> {{specs.uitbreidinggeheugen}}</td>
+						</tr>
+						<tr>
+							<td>Netwerk:</td>
+							<td>{{specs.netwerk}}</td>
+						</tr>
+						<tr>
+							<td>Bluetooth:</td>
+							<td>{{specs.bluetooth}}</td>
+						</tr>
+						<tr>
+							<td>NFC:</td>
+							<td ng-if="specs.nfc === 'V'"><i class="fa fa-check" aria-hidden="true"></i></td>
+							<td ng-if="specs.nfc !== 'V'"><i class="fa fa-times" aria-hidden="true"></i></td>
+						</tr>
+						<tr>
+							<td>USB:</td>
+							<td>{{specs.usb}}</td>
+						</tr>
+						<tr>
+							<td>Simkaart:</td>
+							<td>{{specs.simkaart}}</td>
+						</tr>
+						<tr>
+							<td>Schermformaat:</td>
+							<td>{{specs.schermformaat}}</td>
+						</tr>
+						<tr>
+							<td>Schermresolutie:</td>
+							<td>{{specs.resolutie}}</td>
+						</tr>
+						<tr>
+							<td>Camera:</td>
+							<td>{{specs.camera}}</td>
+						</tr>
+						<tr>
+							<td>Videoresolutie:</td>
+							<td>{{specs.videoresolutie}}</td>
+						</tr>
+						<tr>
+							<td>Front camera:</td>
+							<td>{{specs.frontcamera}}</td>
+						</tr>
+						<tr>
+							<td>Batterij:</td>
+							<td>{{specs.batterij}}</td>
+						</tr>
+
+					</table>
+				</div>
+			</div>
+		</div>
+	</div><!-- /container -->
+</div>

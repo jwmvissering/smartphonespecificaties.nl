@@ -1,0 +1,347 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:500,400,700,900);
+
+html{
+	background-color: #f5f5f5;
+}
+body {
+	padding-top: 50px;
+	background-color: #f5f5f5;
+}
+
+
+.navbar{
+	background-color: #2980b9;
+}
+
+.navbar-fixed-top {
+    border-width: 0px !important;
+}
+
+.navbar-default .navbar-nav>li>a{
+	color: #fff;
+}
+
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #ddd;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    background-color: #f5f5f5;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: #efefef;
+}
+
+
+#selectboxes {
+	margin: 20vh auto 0;
+	width: 40%;
+	transition: all 600ms ease-in-out;
+}
+
+#selectboxes h1 {
+	text-align: center;
+	font-size: 35px !important;
+	font-weight: 500;
+}
+
+.clear {
+	clear: both;
+}
+
+.specsleft .btn {
+	float: right;
+	padding: 10px 30px;
+	margin: 8px 15px;
+	width: 250px;
+}
+
+.toevoegen .specsleft .btn {
+	margin: 15px 15px !important;
+}
+
+
+.specsleft i {
+	margin: 8px 15px;
+	float: right;
+}
+
+.phonesection {
+	margin-top: 50px;
+}
+
+.phonesection .right {
+	max-height: 400px;
+	max-width: 100%;
+	float: right;
+}
+
+.phonespecs {
+	font-size: 1.1em;
+}
+
+.phonespecs td {
+	padding: 5px 15px;
+}
+
+.phonespecs tr td:nth-child(1) {
+	font-weight: 700;
+	width: 40%;
+}
+
+.phonespecs tr:nth-child(odd) {
+	background-color: #e2e2e2;
+}
+
+.phonespecs tr:nth-last-of-type(1) {
+	background-color: transparent;
+}
+
+.phonesection table {
+	width: 100%;
+}
+
+#edit {
+	position: absolute;
+	right: -5px;
+	top: 3px;
+}
+
+.fa-pencil {
+	font-size: 1.5em;
+}
+
+.updateformbutton{
+  margin: 15px 0;
+  float: right;
+}
+
+
+/* vergelijken */
+
+.vergelijkenrechts{
+	float:right;
+}
+
+.vergelijkenlinks{
+	float:left;
+}
+
+#selectboxesvergelijken {
+	margin: 30px auto;
+	width: 80%;
+}
+
+.phonesection .center {
+	max-height: 250px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+#phoneimagecenter {
+	width: 50%;
+	margin: 0 auto;
+	height: 250px;
+}
+
+.vergelijken .btn {
+	float: none;
+	padding: 10px 30px;
+	margin: 0;
+	width: 250px;
+}
+
+.reviewbuttonvergelijken {
+	margin: 8px auto;
+	width: 250px;
+}
+
+.phonespecs .fa-check {
+	color: green;
+}
+
+.phonespecs .fa-times {
+	color: red;
+}
+
+.feedbackedit{
+	width: 100%;
+	background-color: #8bc34a;
+	color: #fff;
+	padding: 15px;
+	text-align: center;
+}
+
+
+/* BEHEER */
+
+#inlogfout{
+	background-color: #f44336;
+	color: #fff;
+	padding: 10px;
+	margin-bottom: 5px;
+	border-radius: 6px;
+}
+
+.beheertable{
+	background-color: #fff;
+}
+
+/*.beheertable td:nth-last-of-type(1) {
+	width: 100px;
+}*/
+
+.beheertable td:nth-child(1) {
+	/*width: 100px;*/
+	font-weight: 700;
+}
+
+.beheertable .infoaanpassing{
+	background-color: rgb(230, 230, 230);
+	padding: 10px;
+}
+
+.beheertable .infoaanpassing img{
+	width: 100%;
+	height: auto;
+}
+
+.beheertable .infoaanpassing:hover{
+	/*background-color: #ddd;*/
+	background-color: rgb(230, 230, 230);
+}
+
+.beheertable .infoaanpassing td{
+	font-weight: 500;
+}
+
+.beheertable td{
+	width:16.66%;
+}
+
+.btn-group{
+	width:100%;
+}
+
+.beheertable .btn{
+	width:100%;
+}
+
+.beheertable .infoaanpassing .btn{
+	width:50%;
+}
+
+.beheertable .fa-check {
+	color: green;
+}
+
+.beheertable .fa-times {
+	color: red;
+}
+
+
+/* toevoegen */
+
+.toevoegen select{
+	width: 80%;
+    display: inline-block;
+}
+
+.toevoegen i{
+	font-size: 1.3em;
+	padding: 5px 15px;
+	color: #666;
+}
+
+.toevoegen input[type="text"]{
+	width: 80%;
+}
+
+.toevoegen input[type="file"] {
+    float: right;
+}
+
+#inputmerk{
+	margin-top: 6px;
+}
+
+
+.toevoegenspecs {
+	font-size: 1.1em;
+}
+
+.toevoegenspecs td {
+	padding: 5px 15px;
+}
+
+.toevoegenspecs tr td:nth-child(1) {
+	font-weight: 700;
+	width: 45%;
+}
+
+.toevoegenspecs tr:nth-child(odd) {
+	background-color: #e2e2e2;
+}
+
+.toevoegenspecs tr:nth-last-of-type(1) {
+	background-color: transparent;
+}
+
+.toevoegenspecs table {
+	width: 100%;
+}
+
+/* API */
+
+.whitebackground{
+	margin-top: 50px;
+	background-color: #fff;
+}
+
+#smartphonesimg{
+	max-width: 100%;
+	margin-top: 50px;
+}
+
+.get{
+	border: 3px solid #eee;
+	border-radius: 4px;
+	margin: 5px 10px 5px 0px;
+	padding: 4px;
+}
+.awithoutstyle{
+	text-decoration: none !important;
+	color: inherit !important;
+}
+
+
+blockquote{
+	margin: 15px 0;
+}
+
+.apideel{
+	margin: 15px 0 35px 0;
+}
+/* ngAnimate */
+
+
+main.ng-enter {
+        /* transition on enter for .5s */
+        transition: 0.8s;
+ 
+        /* start with opacity 0 (invisible) */
+        opacity: 0;
+    }
+ 
+/* end 'enter' transition */
+main.ng-enter-active {
+	/* end with opacity 1 (fade in) */
+	opacity: 1;
+}

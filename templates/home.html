@@ -1,0 +1,254 @@
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.7&appId=1278400438837012";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+<div ng-controller="mainController">
+	<div class="container" ng-init="init()">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-group" id="selectboxes">
+					<h1 id="headingselectboxes">Selecteer een smartphone</h1>
+					<select class="form-control" ng-options="merk.naam for merk in merken" ng-model="selectedMerk" ng-change="changeMerk()">
+						<option value="" disabled selected>Selecteer een merk</option>
+					</select><br>
+					<select class="form-control" ng-options="smartphone.model for smartphone in smartphones" ng-model="selectedSmartphone" ng-change="changeSmartphone()" ng-show="showSmartphoneSelect">
+						<option value="" disabled selected>Selecteer een model</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12 phonesection" ng-show="showSpecs">
+				<div ng-repeat="specs in specificaties">
+					<div class="col-md-6 specsleft ">
+						<img class="right" ng-src="img/{{specs.afbeelding}}">
+							<div class="clear"></div>
+						<p>
+							<a class="btn btn-primary">Reviews bekijken</a>
+							<div class="clear"></div>
+							<button type="button" class="btn btn-primary" ng-click="goVergelijken()">Vergelijk deze smartphone</button>
+							<div class="clear"></div>
+						  </p>
+					</div>
+					<div class="col-md-6 phonespecs">
+						<table ng-show="showTable">
+							<tr>
+								<td>Merk:</td>
+								<td>{{selectedMerk.naam}}</td>
+							</tr>
+							<tr>
+								<td>Model:</td>
+								<td>{{selectedSmartphone.model}}</td>
+							</tr>
+							<tr>
+								<td>Introductie:</td>
+								<td>{{specs.introductie}}</td>
+							</tr>
+							<tr>
+								<td>Grootte:</td>
+								<td>{{specs.afmetingen}}</td>
+							</tr>
+							<tr>
+								<td>Gewicht:</td>
+								<td>{{specs.gewicht}}</td>
+							</tr>
+							<tr>
+								<td>Besturingssysteem:</td>
+								<td>{{specs.besturingssysteem}}</td>
+							</tr>
+							<tr>
+								<td>Processor:</td>
+								<td>{{specs.processor}}</td>
+							</tr>
+							<tr>
+								<td>Interne opslag:</td>
+								<td>{{specs.interneopslag}}</td>
+							</tr>
+							<tr>
+								<td>Uitbreidbaar geheugen:</td>
+								<td ng-if="specs.uitbreidinggeheugen === 'X'"><i class="fa fa-times" aria-hidden="true"></i></td>
+								<td ng-if="specs.uitbreidinggeheugen === 'Onbekend'">{{specs.uitbreidinggeheugen}}</td>
+								<td ng-if="specs.uitbreidinggeheugen !== 'X' && specs.uitbreidinggeheugen !== 'Onbekend'"><i class="fa fa-check" aria-hidden="true"></i> {{specs.uitbreidinggeheugen}}</td>
+							</tr>
+							<tr>
+								<td>Netwerk:</td>
+								<td>{{specs.netwerk}}</td>
+							</tr>
+							<tr>
+								<td>Bluetooth:</td>
+								<td>{{specs.bluetooth}}</td>
+							</tr>
+							<tr>
+								<td>NFC:</td>
+								<td ng-if="specs.nfc === 'V'"><i class="fa fa-check" aria-hidden="true"></i></td>
+								<td ng-if="specs.nfc !== 'V'"><i class="fa fa-times" aria-hidden="true"></i></td>
+							</tr>
+							<tr>
+								<td>USB:</td>
+								<td>{{specs.usb}}</td>
+							</tr>
+							<tr>
+								<td>Simkaart:</td>
+								<td>{{specs.simkaart}}</td>
+							</tr>
+							<tr>
+								<td>Schermformaat:</td>
+								<td>{{specs.schermformaat}}</td>
+							</tr>
+							<tr>
+								<td>Schermresolutie:</td>
+								<td>{{specs.resolutie}}</td>
+							</tr>
+							<tr>
+								<td>Camera:</td>
+								<td>{{specs.camera}}</td>
+							</tr>
+							<tr>
+								<td>Videoresolutie:</td>
+								<td>{{specs.videoresolutie}}</td>
+							</tr>
+							<tr>
+								<td>Front camera:</td>
+								<td>{{specs.frontcamera}}</td>
+							</tr>
+							<tr>
+								<td>Batterij:</td>
+								<td>{{specs.batterij}}</td>
+							</tr>
+	
+						</table>
+						
+						
+						<div class="fb-comments" data-href="localhost?id=1" data-width="570" data-numposts="5"></div>
+						
+						
+						
+					</div>
+				</div>
+				
+					<div ng-show="feedback" class="col-md-6 phonespecs">
+						<div class="feedbackedit">{{feedbackmelding}}</div>
+					</div>
+					
+					<div class="col-md-6 phonespecs">
+					<form ng-show="showEditableTable">
+						<table>
+							<tr>
+								<td colspan=2 class="bg-primary">Wijzigingen dienen na inzending gecontroleerd te worden door de webmaster en zijn dus niet direct zichtbaar.</td>
+							</tr>
+							<tr>
+								<td>Merk:</td>
+								<td>{{selectedMerk.naam}}</td>
+							</tr>
+							<tr>
+								<td>Model:</td>
+								<td><input type="text" ng-model="editmodel"></td>
+							</tr>
+							<tr>
+								<td>Introductie:</td>
+								<td><input ng-model="editintroductie"></td>
+							</tr>
+							<tr>
+								<td>Grootte:</td>
+								<td><input ng-model="editafmetingen"></td>
+							</tr>
+							<tr>
+								<td>Gewicht:</td>
+								<td><input ng-model="editgewicht"></td>
+							</tr>
+							<tr>
+								<td>Besturingssysteem:</td>
+								<td><input ng-model="editbesturingssysteem"></td>
+							</tr>
+							<tr>
+								<td>Processor:</td>
+								<td><input ng-model="editprocessor"></td>
+							</tr>
+							<tr>
+								<td>Interne opslag:</td>
+								<td><input ng-model="editinterneopslag"></td>
+							</tr>
+							<tr>
+								<td>Uitbreidbaar geheugen:</td>
+								<td><input ng-model="editcheckuitbreidbaargeheugen" type="checkbox"></td>
+							</tr>
+							<tr ng-if="editcheckuitbreidbaargeheugen === true">
+								<td>Soort uitbreidbaar geheugen:</td>
+								<td><input type="text" ng-model="$parent.edituitbreidinggeheugen"></td>
+							</tr>
+							<tr>
+								<td>Netwerk:</td>
+								<td><input ng-model="editnetwerk"></td>
+							</tr>
+							<tr>
+								<td>Bluetooth:</td>
+								<td><input ng-model="editbluetooth"></td>
+							</tr>
+							<tr>
+								<td>NFC:</td>
+								<td><input ng-model="editnfc" type="checkbox"></td>
+							</tr>
+							<tr>
+								<td>USB:</td>
+								<td><input ng-model="editusb"></td>
+							</tr>
+							<tr>
+								<td>Simkaart:</td>
+								<td><input ng-model="editsimkaart"></td>
+							</tr>
+							<tr>
+								<td>Schermformaat:</td>
+								<td><input ng-model="editschermformaat"></td>
+							</tr>
+							<tr>
+								<td>Schermresolutie:</td>
+								<td><input ng-model="editresolutie"></td>
+							</tr>
+							<tr>
+								<td>Camera:</td>
+								<td><input ng-model="editcamera"></td>
+							</tr>
+							<tr>
+								<td>Videoresolutie:</td>
+								<td><input ng-model="editvideoresolutie"></td>
+							</tr>
+							<tr>
+								<td>Front camera:</td>
+								<td><input ng-model="editfrontcamera"></td>
+							</tr>
+							<tr>
+								<td>Batterij:</td>
+								<td><input ng-model="editbatterij"></td>
+							</tr>
+							<tr>
+								<td>Bovenstaande gegevens zijn officieel bevestigd door de fabrikant:</td>
+								<td><input ng-model="editbevestigd" type="checkbox"></td>
+							</tr>
+							<tr>
+								<td colspan=2><button type="submit" ng-click="submitEdit()" class="btn btn-primary updateformbutton">Aanpassingen versturen</button></td>
+							</tr>
+							</table>
+						</form>
+
+					</div>
+						<div ng-show="showPencil" id="edit">
+							<a ng-click="editButton()"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+						</div>
+				</div>
+			</div>
+		
+		</div>
+	
+	</div><!-- /container -->
+</div>
+

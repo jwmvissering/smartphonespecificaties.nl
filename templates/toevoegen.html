@@ -1,0 +1,133 @@
+<div ng-controller="toevoegenController">
+	<div class="container" ng-init="init()">
+		<div class="row">
+			<div class="col-md-12 phonesection">
+				<div>
+				<div class="col-md-5 specsleft toevoegen" ng-show="inputfields">
+					<form name="form">
+						<img class="right" ngf-thumbnail="afbeeldinglink">
+						<div class="clear"></div>
+						<p>
+							  <button class="btn btn-primary" ngf-select="upload($file)">Afbeelding uploaden</button>
+						</p>
+					</form>
+				</div>
+				
+					<div ng-show="feedback" class="col-md-6 phonespecs">
+						<div class="feedbackedit">{{feedbackmelding}}</div>
+					</div>
+					
+					<div class="col-md-7 toevoegenspecs toevoegen" ng-show="inputfields">
+						<form>
+							<table>
+								<tr>
+									<td colspan=2 class="bg-primary">Wijzigingen dienen na inzending gecontroleerd te worden door de webmaster en zijn dus niet direct zichtbaar.</td>
+								</tr>
+								<tr>
+									<td>Merk:</td>
+									<td>
+										<select ng-show="showselectmerk" class="form-control" ng-options="merk.naam for merk in merken" ng-model="selectedMerk">
+											<option value="" disabled selected>Selecteer een merk</option>
+										</select>
+										<i class="fa fa-plus" aria-hidden="true" ng-click="showPrompt($event)"></i>
+									</td>
+								</tr>
+								<tr>
+									<td>Model:</td>
+									<td><input type="text" ng-model="editmodel"></td>
+								</tr>
+								<tr>
+									<td>Introductie:</td>
+									<td><input type="date" ng-model="editintroductie"></td>
+								</tr>
+								<tr>
+									<td>Grootte:</td>
+									<td><input type="text" ng-model="editafmetingen"></td>
+								</tr>
+								<tr>
+									<td>Gewicht:</td>
+									<td><input type="text" ng-model="editgewicht"></td>
+								</tr>
+								<tr>
+									<td>Besturingssysteem:</td>
+									<td><input type="text" ng-model="editbesturingssysteem"></td>
+								</tr>
+								<tr>
+									<td>Processor:</td>
+									<td><input type="text" ng-model="editprocessor"></td>
+								</tr>
+								<tr>
+									<td>Interne opslag:</td>
+									<td><input type="text" ng-model="editinterneopslag"></td>
+								</tr>
+								<tr>
+									<td>Uitbreidbaar geheugen:</td>
+									<td><input ng-model="editcheckuitbreidbaargeheugen" type="checkbox"></td>
+								</tr>
+								<tr ng-if="editcheckuitbreidbaargeheugen">
+									<td>Soort uitbreidbaar geheugen:</td>
+									<td><input type="text" ng-model="$parent.edituitbreidinggeheugen"></td>
+								</tr>
+								<tr>
+									<td>Netwerk:</td>
+									<td><input type="text" ng-model="editnetwerk"></td>
+								</tr>
+								<tr>
+									<td>Bluetooth:</td>
+									<td><input type="text" ng-model="editbluetooth"></td>
+								</tr>
+								<tr>
+									<td>NFC:</td>
+									<td><input ng-model="editnfc" type="checkbox"></td>
+								</tr>
+								<tr>
+									<td>USB:</td>
+									<td><input type="text" ng-model="editusb"></td>
+								</tr>
+								<tr>
+									<td>Simkaart:</td>
+									<td><input type="text" ng-model="editsimkaart"></td>
+								</tr>
+								<tr>
+									<td>Schermformaat:</td>
+									<td><input type="text" ng-model="editschermformaat"></td>
+								</tr>
+								<tr>
+									<td>Schermresolutie:</td>
+									<td><input type="text" ng-model="editresolutie"></td>
+								</tr>
+								<tr>
+									<td>Camera:</td>
+									<td><input type="text" ng-model="editcamera"></td>
+								</tr>
+								<tr>
+									<td>Videoresolutie:</td>
+									<td><input type="text" ng-model="editvideoresolutie"></td>
+								</tr>
+								<tr>
+									<td>Front camera:</td>
+									<td><input type="text" ng-model="editfrontcamera"></td>
+								</tr>
+								<tr>
+									<td>Batterij:</td>
+									<td><input type="text" ng-model="editbatterij"></td>
+								</tr>
+								<tr>
+									<td>Bovenstaande gegevens zijn officieel bevestigd door de fabrikant:</td>
+									<td><input ng-model="editbevestigd" type="checkbox"></td>
+								</tr>
+								<tr>
+									<td colspan=2><button type="submit" ng-click="submitEdit()" class="btn btn-primary updateformbutton">Aanpassingen versturen</button></td>
+								</tr>
+							</table>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	
+	</div><!-- /container -->
+</div>
+

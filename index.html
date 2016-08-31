@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="nl_NL">
+<head>
+<title>Smartphone Vergelijken</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+
+<link href="css/signin.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet" />
+
+
+</head>
+
+<body ng-app="myApp">
+	<header>
+			<!-- Fixed navbar -->
+		<nav class="navbar navbar-default navbar-fixed-top" ng-controller="headerController">
+		  <div class="container">
+			<div class="navbar-header">
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Menu</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			  </button>
+			  <a class="navbar-brand" href="#/"><i class="fa fa-mobile" aria-hidden="true"></i> specs</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+			  <ul class="nav navbar-nav">
+				<li ng-class="homeclass"><a href="#">Home</a></li>
+				<li ng-class="vergelijkenclass"><a href="#/vergelijken">Vergelijken</a></li>
+				<li ng-class="toevoegenclass"><a href="#/toevoegen">Toevoegen</a></li>
+				<li ng-class="apiclass"><a href="#/api">API</a></li>
+			  </ul>
+			  <ul class="nav navbar-nav navbar-right">
+				<li ng-if="ingelogd == '1'"><a>Hallo Jamon</a></li>
+				<li ng-class="beheerclass"><a href="#/beheer"><i class="fa fa-lock" aria-hidden="true"></i></a></li>
+				<li ng-if="ingelogd == '1'"><a href="" ng-click="uitloggen()">Uitloggen</a></li>
+			  </ul>
+			</div
+		  </div>
+		</nav>
+	</header>
+	<main ui-view></main>
+	
+
+
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="app/js/app.js"></script>
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="app/controllers/maincontroller.js"></script>
+	<script src="app/controllers/vergelijkenController.js"></script>
+	<script src="app/controllers/headerController.js"></script>
+	<script src="app/controllers/loginController.js"></script>
+	<script src="app/controllers/toevoegenController.js"></script>
+	<script src="app/controllers/beheerController.js"></script>
+	<script src="app/controllers/apiController.js"></script>
+	
+	<script src="bower_components/angular-timeago/dist/angular-timeago.min.js"></script>
+	<script src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+	<script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+	
+	<script src="app/factories/mainFactory.js"></script>
+	
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script> 
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script> 
+    <script src="node_modules/angular-material/angular-material.min.js"></script> 
+	
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<div class="container" ng-controller="beheerController">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Aanpassingen</h2>
+				<div ng-init="init()">
+					<table class="beheertable table table-hover">
+						<tr>
+							<th>#</th><th>Tijdstip</th><th>Merk</th><th>Model</th><th>Bevestigd</th><th></th>
+						</tr>
+						<tr ng-repeat-start="aanpassing in aanpassingen track by $index">
+							<td>{{$index + 1}}</td><td>{{aanpassing.datumtoevoeging | timeAgo}}</td><td>{{aanpassing.naam}}</td><td>{{aanpassing.origineelmodel}}</td><td ng-if="aanpassing.bevestigd === 'V'"><i class="fa fa-check" aria-hidden="true"></i></td><td ng-if="aanpassing.bevestigd !== 'V'"><i class="fa fa-times" aria-hidden="true"></i></td><td><button class="btn btn-primary" ng-click="info=!info">Bekijken</button></td>
+						</tr>
+						<tr ng-show="info" class="infoaanpassing">
+							<td rowspan="5"><div class="test"><img ng-src="/img/{{aanpassing.afbeelding}}"></div></td><td>Model: <br>{{aanpassing.model}}</td><td>Introductie: <br>{{aanpassing.introductie}}</td><td>Afmetingen: <br>{{aanpassing.afmetingen}}</td><td>Gewicht:<br>{{aanpassing.gewicht}}</td><td>Processor:<br>{{aanpassing.processor}}</td>
+						</tr>
+						<tr ng-show="info" class="infoaanpassing">
+							<td>Interne opslag:<br>{{aanpassing.interneopslag}}</td><td>Uitbreiding geheugen:<br>{{aanpassing.uitbreidinggeheugen}}</td><td>Netwerk:<br>{{aanpassing.netwerk}}</td><td>Bluetooth:<br>{{aanpassing.bluetooth}}</td><td>NFC:<br>{{aanpassing.nfc}}</td>
+						</tr>
+						<tr ng-show="info" class="infoaanpassing">
+							<td>USB:<br>{{aanpassing.usb}}</td><td>Simkaart:<br>{{aanpassing.simkaart}}</td><td>Resolutie:<br>{{aanpassing.resolutie}}</td><td>Schermformaat:<br>{{aanpassing.schermformaat}}</td><td>Camera:<br>{{aanpassing.camera}}</td>
+						</tr>
+						<tr ng-show="info" class="infoaanpassing">
+							<td>Videoresolutie:<br>{{aanpassing.videoresolutie}}</td><td>Frontcamera:<br>{{aanpassing.frontcamera}}</td><td>Batterij:<br>{{aanpassing.batterij}}</td><td>Besturingssysteem:<br>{{aanpassing.besturingssysteem}}</td><td></td>
+						</tr>
+						<tr ng-show="info" class="infoaanpassing" ng-repeat-end>
+							<td></td></td><td></td><td></td>
+							<td colspan="2">
+								<div class="btn-group" data-toggle="buttons">									
+								<button ng-click="dialogAanpassingGoedkeuren($index, aanpassing.id, aanpassing.smartphoneid)" class="btn btn-success">Goedkeuren</button>
+								<button ng-click="dialogAanpassingAfkeuren($index, aanpassing.id)" class="btn btn-danger">{{afkeuren}}</button>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Toevoegingen</h2>
+				<div>
+					<table class="beheertable table table-hover">
+						<tr>
+							<th>#</th><th>Tijdstip</th><th>Merk</th><th>Model</th><th>Bevestigd</th><th></th>
+						</tr>
+						<tr ng-repeat-start="telefoon in nieuwetelefoon track by $index">
+							<td>{{$index + 1}}</td><td>{{telefoon.datumtoevoeging | timeAgo}}</td><td>{{telefoon.naam}}</td><td>{{telefoon.model}}</td><td ng-if="telefoon.bevestigd === 'V'"><i class="fa fa-check" aria-hidden="true"></i></td><td ng-if="telefoon.bevestigd !== 'V'"><i class="fa fa-times" aria-hidden="true"></i></td><td><button class="btn btn-primary" ng-click="info=!info">Bekijken</button></td>
+						</tr>
+						<tr ng-show="info" class="infoaanpassing">
+							<td rowspan="5"><img ng-src="/img/{{telefoon.afbeelding}}"></td><td>Introductie: <br>{{telefoon.introductie}}</td><td>Afmetingen: <br>{{telefoon.afmetingen}}</td><td>Gewicht:<br>{{telefoon.gewicht}}</td><td>Processor:<br>{{telefoon.processor}}</td><td>Interne opslag:<br>{{telefoon.interneopslag}}</td>
+						</tr>
+						<tr ng-show="info" class="infoaanpassing">
+							<td>Uitbreiding geheugen:<br>{{telefoon.uitbreidinggeheugen}}</td><td>Netwerk:<br>{{telefoon.netwerk}}</td><td>Bluetooth:<br>{{telefoon.bluetooth}}</td><td>NFC:<br>{{telefoon.nfc}}</td><td>USB:<br>{{telefoon.usb}}</td>
+						</tr>
+						<tr ng-show="info" class="infoaanpassing">
+							<td>Simkaart:<br>{{telefoon.simkaart}}</td><td>Resolutie:<br>{{telefoon.resolutie}}</td><td>Schermformaat:<br>{{telefoon.schermformaat}}</td><td>Camera:<br>{{telefoon.camera}}</td><td>Videoresolutie:<br>{{telefoon.videoresolutie}}</td>
+						</tr>
+						<tr ng-show="info" class="infoaanpassing">
+							<td>Frontcamera:<br>{{telefoon.frontcamera}}</td><td>Batterij:<br>{{telefoon.batterij}}</td><td>Besturingssysteem:<br>{{telefoon.besturingssysteem}}</td><td></td><td></td>
+						</tr>
+						<tr ng-show="info" class="infoaanpassing" ng-repeat-end>
+							<td></td></td><td></td><td></td>
+							<td colspan="2">
+								<div class="btn-group" data-toggle="buttons">									
+								<button ng-click="dialogToevoegingGoedkeuren($index, telefoon.id)" class="btn btn-success">Goedkeuren</button>
+								<button ng-click="dialogToevoegingAfkeuren($index, telefoon.id)" class="btn btn-danger">{{afkeuren}}</button>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> <!-- /container -->
